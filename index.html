@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verified!</title>
+    <style>
+        /* Global Styles */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            position: relative;
+            overflow: hidden;
+            font-family: 'Arial', sans-serif;
+            color: #ffffff;
+        }
+        .container {
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            animation: fadeIn 1s ease-in-out;
+            padding: 40px 60px; /* More space around text */
+            border-radius: 15px; /* Rounded corners */
+            background: rgba(0, 0, 0, 0.7); /* Semi-transparent background for contrast */
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); /* Adds depth */
+        }
+        h1 {
+            font-size: 80px;
+            font-weight: bold;
+            margin: 0;
+            color: #ffffff; /* White color for main text */
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
+            animation: slideIn 1s ease-in-out;
+        }
+        p {
+            font-size: 28px;
+            margin: 10px 0;
+            color: #ffffff; /* White text */
+            opacity: 0.9;
+            text-shadow: 1px 1px 8px rgba(0, 0, 0, 0.5);
+            animation: slideIn 1s ease-in-out 0.5s; /* Slight delay for the paragraph */
+        }
+        button {
+            background-color: #ffffff; /* White button */
+            border: none;
+            color: black; /* Black text */
+            padding: 15px 30px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 22px;
+            margin: 20px 10px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s, transform 0.2s;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+        button:hover {
+            background-color: #f0f0f0; /* Light grey on hover */
+            transform: translateY(-3px);
+        }
+        .join-button {
+            background-color: #4CAF50; /* Green button for Discord */
+        }
+        .join-button:hover {
+            background-color: #45a049; /* Darker green on hover */
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes slideIn {
+            from { transform: translateY(-20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        /* Additional Decorative Elements */
+        .footer {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #ffffff;
+            font-size: 16px;
+            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+        }
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 48px;
+            }
+            p {
+                font-size: 18px;
+            }
+            button {
+                font-size: 18px;
+                padding: 12px 20px;
+            }
+        }
+
+        /* Dot Particle Styles */
+        .dot {
+            position: absolute;
+            border-radius: 50%;
+            background-color: white;
+            opacity: 0.7;
+            pointer-events: none; /* Avoids interference with clicks */
+        }
+    </style>
+    <script>
+        // Function to create dot particles
+        function createDotParticles() {
+            const numDots = 100; // Number of dots
+            const body = document.body;
+
+            for (let i = 0; i < numDots; i++) {
+                const dot = document.createElement('div');
+                dot.className = 'dot';
+                const size = Math.random() * 6 + 2; // Size between 2 and 8 pixels
+                dot.style.width = `${size}px`;
+                dot.style.height = `${size}px`;
+                dot.style.top = `${Math.random() * window.innerHeight}px`;
+                dot.style.left = `${Math.random() * window.innerWidth}px`;
+                dot.style.animation = `moveDots ${Math.random() * 5 + 5}s linear infinite`; // Random animation duration
+                body.appendChild(dot);
+            }
+        }
+
+        // Move dots in random directions
+        function animateDots() {
+            const dots = document.querySelectorAll('.dot');
+            dots.forEach(dot => {
+                const dx = (Math.random() - 0.5) * 2; // Random x direction
+                const dy = (Math.random() - 0.5) * 2; // Random y direction
+                const duration = Math.random() * 3 + 2; // Random duration
+                dot.style.transition = `transform ${duration}s ease-in-out`;
+                setInterval(() => {
+                    dot.style.transform = `translate(${dx * 100}px, ${dy * 100}px)`;
+                }, duration * 1000);
+            });
+        }
+
+        window.onload = () => {
+            createDotParticles();
+            animateDots();
+        };
+    </script>
+</head>
+<body>
+    <div class="background-gif" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: url('https://i.pinimg.com/originals/59/36/4f/59364f3b73356d87b2bdeefed1517003.gif') no-repeat center center fixed; background-size: cover; z-index: -1;"></div>
+    <div class="container">
+        <h1>Successfully Verified!</h1>
+        <p>You can now close this page.</p>
+        <button onclick="window.close();">Close Page</button>
+        <button class="join-button" onclick="window.open('https://discord.gg/2F7tu2rvEh', '_blank');">Join Us!</button>
+    </div>
+
+    <!-- Footer for additional information -->
+    <div class="footer">
+        &copy; 2024 madeby hpzeren,lvivi | <a href="https://discord.gg/2F7tu2rvEh" style="color: #ffffff;">Join our Discord!</a>
+    </div>
+</body>
+</html>
